@@ -21,24 +21,20 @@ export default class NetworkManger extends cc.Component {
 
     // update (dt) {}
 
-    saveFile(fileName: string, data: any) {
+    saveFile(data: Blob) {
 
         var myReader = new FileReader();
 
         myReader.addEventListener("loadend", function (e) {
-
-            console.log(e.srcElement["result"])
-            
+ 
             var params = new URLSearchParams();
             params.append('data', e.srcElement["result"]);
-            params.append('filename', fileName);
-            axios.post('./src/assets/resource/save.php', params)
+            axios.post('/php_records/save.php', params)
                 .then(res => {
-                    console.log(res);
+                    console.log("Response : ", res);
                 }).catch(e => {
+                    console.log("Error : ", e);
                 })
-
-
 
         });
 

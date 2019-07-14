@@ -83,13 +83,14 @@ function CanvasRecorder(canvas, video_bits_per_sec) {
         const name = file_name || 'recording.webm';
         const blob = new Blob(recordedBlobs, { type: supportedType });
         const url = window.URL.createObjectURL(blob);
-        console.log(url)
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = name;
-        document.body.appendChild(a);
-        a.click();
+        /*
+       const a = document.createElement('a');
+       a.style.display = 'none';
+       a.href = url;
+       a.download = name;
+       document.body.appendChild(a);
+       a.click();
+       */
         setTimeout(() => {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
@@ -98,7 +99,7 @@ function CanvasRecorder(canvas, video_bits_per_sec) {
 
     function getBlob() {
 
-        const blob = new Blob(recordedBlobs, { type: supportedType });    
+        const blob = new Blob(recordedBlobs, { type: supportedType });
 
         return blob;
     }
