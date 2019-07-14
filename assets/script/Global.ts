@@ -18,6 +18,7 @@ export default class Global extends cc.Component {
 
         this.recorder = new CanvasRecorder(document.getElementById("GameCanvas"))
         this.networkManger = new NetworkManger();
+        
     }
 
     startRecord() {

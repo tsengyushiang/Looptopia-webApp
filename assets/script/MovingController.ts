@@ -12,6 +12,10 @@ export default class NewClass extends cc.Component {
 
     onLoad() {
 
+        //設定物理引擎
+        cc.director.getPhysicsManager().enabled = true;
+        cc.director.getPhysicsManager().debugDrawFlags = 1;
+        cc.director.getPhysicsManager().gravity = cc.v2(0, 0);
 
         this.rigibody = this.node.getComponent(cc.RigidBody);
 
