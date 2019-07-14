@@ -7,7 +7,9 @@ cc.Component.EventHandler
 @ccclass
 export default class PathDrawer extends cc.Component {
 
+    graphics: cc.Graphics
     path = [];
+
 
     @property
     totalPlayTime: number = 10;
@@ -17,14 +19,34 @@ export default class PathDrawer extends cc.Component {
     onLoad() {
 
         this.path = this.getComponent(PathRecorder).getPath();
-        console.log(this.path);
+        this.graphics = this.getComponent(cc.Graphics);
     }
 
     update(dt) {
 
+        let preindex_afterNormalize = this.currentTime / this.totalPlayTime * this.path.length;
+        let preindex =  Math.floor(preindex_afterNormalize)
+
         this.currentTime += dt;
 
-        console.log(Math.floor(this.currentTime));
+        let index_afterNormalize = this.currentTime / this.totalPlayTime * this.path.length;
+
+        let index = Math.floor(index_afterNormalize);
+
+
+        if (index > 0 && index < this.path.length) {
+
+            this.graphics.moveTo(
+                this.path[preindex].x + 960,
+                this.path[preindex].y + 540);
+
+            this.graphics.lineTo(
+                this.path[index].x + 960,
+                this.path[index].y + 540);
+
+            this.graphics.stroke();
+
+        }
 
     }
 }

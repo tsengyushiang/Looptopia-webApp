@@ -40,7 +40,7 @@ export default class Global extends cc.Component {
 
     }
     GoEndScene() {
-        cc.director.loadScene("recorderScene");
+        cc.director.loadScene("recordScene");
 
     }
     GoMenu() {

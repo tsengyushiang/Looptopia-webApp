@@ -710,7 +710,7 @@
     },
     "component": "",
     "_componentId": "b6886D4mHZC3Z5ACg6C7k47",
-    "handler": "GoPracticeScene",
+    "handler": "GoGameScene",
     "customEventData": ""
   },
   {

@@ -7,11 +7,17 @@ export default class NewClass extends cc.Component {
 
     @property
     width: number = 0;
-    
+
     @property
-    height : number = 0;
+    height: number = 0;
 
     onLoad() {
+
+
+        //設定物理引擎
+        cc.director.getPhysicsManager().enabled = true;
+        cc.director.getPhysicsManager().debugDrawFlags = 1;
+        cc.director.getPhysicsManager().gravity = cc.v2(0, 0);
 
         //加入物理邊框
         let width = this.width;
