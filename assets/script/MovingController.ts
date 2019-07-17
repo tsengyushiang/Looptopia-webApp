@@ -21,6 +21,10 @@ export default class MovingController extends cc.Component {
 
     onLoad() {
 
+
+        cc.director.getCollisionManager().enabled = true;
+
+
         //設定物理引擎
         cc.director.getPhysicsManager().enabled = true;
         cc.director.getPhysicsManager().debugDrawFlags = 1;
@@ -125,5 +129,9 @@ export default class MovingController extends cc.Component {
                     this.currentMovingType = null;
                 break;
         }
+    }
+
+    onBeginContact(contact,selfCollider,otherCollider) {
+        console.log(contact,selfCollider,otherCollider);
     }
 }
