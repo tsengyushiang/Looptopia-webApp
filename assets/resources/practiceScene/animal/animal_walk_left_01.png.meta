@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "f0e3823a-4f50-4ac7-b933-c3d5a51e40fe",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "animal_walk_left_01": {
+      "ver": "1.0.4",
+      "uuid": "24e90a6e-e067-4516-ac1d-ba403cac8aae",
+      "rawTextureUuid": "f0e3823a-4f50-4ac7-b933-c3d5a51e40fe",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2.5,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 146,
+      "height": 137,
+      "rawWidth": 151,
+      "rawHeight": 137,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

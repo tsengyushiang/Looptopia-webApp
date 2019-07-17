@@ -4,6 +4,8 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class NewClass extends cc.Component {
 
+    @property
+    debug: boolean = false;
 
     @property
     width: number = 0;
@@ -16,7 +18,7 @@ export default class NewClass extends cc.Component {
 
         //設定物理引擎
         cc.director.getPhysicsManager().enabled = true;
-        cc.director.getPhysicsManager().debugDrawFlags = 1;
+        cc.director.getPhysicsManager().debugDrawFlags = this.debug == true ? 1 : 0 ;
         cc.director.getPhysicsManager().gravity = cc.v2(0, 0);
 
         //加入物理邊框
@@ -49,6 +51,7 @@ export default class NewClass extends cc.Component {
 
 
     start() {
+        cc.director.getPhysicsManager().debugDrawFlags = this.debug == true ? 1 : 0 ;
 
     }
 

@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.4469148552288804,
-      "y": 0.4469148552288804,
+      "x": 0.31927083333333334,
+      "y": 0.31927083333333334,
       "z": 1
     },
     "_quat": {
@@ -1607,7 +1607,7 @@
     },
     "component": "",
     "_componentId": "b6886D4mHZC3Z5ACg6C7k47",
-    "handler": "GoGameScene",
+    "handler": "GoPracticeScene",
     "customEventData": ""
   },
   {
@@ -3123,7 +3123,7 @@
     },
     "component": "",
     "_componentId": "b6886D4mHZC3Z5ACg6C7k47",
-    "handler": "GoGameScene",
+    "handler": "GoPracticeScene",
     "customEventData": ""
   },
   {

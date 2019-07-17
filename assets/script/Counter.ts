@@ -18,16 +18,16 @@ export default class Counter extends cc.Component {
 
     @property(cc.Component.EventHandler)
     onBegin = [];
-    
+
     @property(cc.Component.EventHandler)
     onFinish = [];
 
     onLoad() {
 
-        this.timeBar.progress = 0;
+        this.timeBar.progress = 1;
         this.timeBar.node.active = this.showTimeBar;
 
-        cc.director.preloadScene(this.nextSceneName,function(){});
+        cc.director.preloadScene(this.nextSceneName, function () { });
     }
 
     start() {
@@ -49,7 +49,7 @@ export default class Counter extends cc.Component {
 
             }
 
-            this.timeBar.progress = currentTime / this.countDown_second;
+            this.timeBar.progress = 1 - currentTime / this.countDown_second;
 
             currentTime++;
         }

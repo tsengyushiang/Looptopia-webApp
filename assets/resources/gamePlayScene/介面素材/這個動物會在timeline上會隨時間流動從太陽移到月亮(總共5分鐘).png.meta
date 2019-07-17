@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "c156a48b-5276-4e21-bf09-9e473db4e32f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "這個動物會在timeline上會隨時間流動從太陽移到月亮(總共5分鐘)": {
+      "ver": "1.0.4",
+      "uuid": "9bad7dc7-cf05-4f94-85d6-fca08a8a4d51",
+      "rawTextureUuid": "c156a48b-5276-4e21-bf09-9e473db4e32f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 34,
+      "height": 29,
+      "rawWidth": 34,
+      "rawHeight": 29,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

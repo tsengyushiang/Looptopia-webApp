@@ -1,12 +1,21 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class MovingController extends cc.Component {
 
     @property({ type: cc.Integer })
     stepSize: number = 0;
 
+    @property(cc.AnimationClip)
+    moveUp = null;
+    @property(cc.AnimationClip)
+    moveDown = null;
+    @property(cc.AnimationClip)
+    moveRight = null;
+    @property(cc.AnimationClip)
+    moveLeft = null;
 
+    animator: cc.Animation;
     rigibody: cc.RigidBody;
     currentMovingType: number = null;
 
@@ -17,18 +26,29 @@ export default class NewClass extends cc.Component {
         cc.director.getPhysicsManager().debugDrawFlags = 1;
         cc.director.getPhysicsManager().gravity = cc.v2(0, 0);
 
+        this.animator = this.node.getComponent(cc.Animation);
         this.rigibody = this.node.getComponent(cc.RigidBody);
 
         //偵測鍵盤按下事件
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
 
-    }
 
+    }
 
     onDestroy() {
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
+    }
+
+
+    start() {
+
+        this.animator.addClip(this.moveUp, 'moveup');
+        this.animator.addClip(this.moveDown, 'movedown');
+        this.animator.addClip(this.moveRight, 'moveright');
+        this.animator.addClip(this.moveLeft, 'moveleft');
+
     }
 
     update(dt) {
@@ -51,6 +71,29 @@ export default class NewClass extends cc.Component {
                 this.rigibody.linearVelocity = cc.v2(0, 0);
                 break;
         }
+
+        switch (this.currentMovingType) {
+            case cc.macro.KEY.w:
+                if (this.animator.currentClip != this.moveUp)
+                    this.animator.play('moveup');
+                break;
+            case cc.macro.KEY.s:
+                if (this.animator.currentClip != this.moveDown)
+                    this.animator.play('movedown');
+                break;
+            case cc.macro.KEY.a:
+                if (this.animator.currentClip != this.moveLeft)
+                    this.animator.play('moveleft');
+                break;
+            case cc.macro.KEY.d:
+                if (this.animator.currentClip != this.moveRight)
+                    this.animator.play('moveright');
+                break;
+            default:
+                this.animator.stop();
+                break;
+        }
+
     }
 
 

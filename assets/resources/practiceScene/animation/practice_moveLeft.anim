@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "practice_moveLeft",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "24e90a6e-e067-4516-ac1d-ba403cac8aae"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "a9979a28-ce89-454a-86f2-da87a3ff5e8f"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "c0e94bc4-0235-44d3-a1c1-4ff73935e234"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
