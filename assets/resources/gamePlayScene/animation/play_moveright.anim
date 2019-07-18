@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "play_moveright",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "f96010a5-8176-462b-a886-8b853dcbb890"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "754721e4-e529-4f67-9c1b-2f4cd9e12a22"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "24e5147a-0268-4a9b-a6f3-4327c4021079"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

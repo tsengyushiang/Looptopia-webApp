@@ -5,7 +5,7 @@ export default class NewClass extends cc.Component {
 
     @property(cc.Node)
     settingObj = [];
-    
+
     update(dt) {
 
 
@@ -16,7 +16,6 @@ export default class NewClass extends cc.Component {
 
         this.settingObj.forEach((obj, index) => {
             obj.zIndex = index + 1;
-            console.log(obj.name, index);
         })
 
     }

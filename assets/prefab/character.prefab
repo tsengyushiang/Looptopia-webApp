@@ -17,7 +17,7 @@
     "_parent": null,
     "_children": [],
     "_active": true,
-    "_level": 1,
+    "_level": 2,
     "_components": [
       {
         "__id__": 2
@@ -58,14 +58,14 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -42,
-      "y": -59,
+      "x": 0,
+      "y": 0,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.83,
+      "y": 0.83,
       "z": 1
     },
     "_rotationX": 0,
@@ -159,32 +159,6 @@
     "_id": ""
   },
   {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_defaultClip": null,
-    "_clips": [
-      {
-        "__uuid__": "8af07c7c-53af-422e-a1e4-eb4427dd7720"
-      },
-      {
-        "__uuid__": "5941f8f4-b609-4ba0-a414-13896b533ee8"
-      },
-      {
-        "__uuid__": "f3981fe1-c0bb-4a58-b593-c9f8745520f2"
-      },
-      {
-        "__uuid__": "1fcfa83f-73fb-4e0d-9827-6b120edc63ea"
-      }
-    ],
-    "playOnLoad": false,
-    "_id": ""
-  },
-  {
     "__type__": "cc.PhysicsBoxCollider",
     "_name": "",
     "_objFlags": 0,
@@ -208,6 +182,32 @@
       "width": 30,
       "height": 17
     },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_defaultClip": null,
+    "_clips": [
+      {
+        "__uuid__": "8af07c7c-53af-422e-a1e4-eb4427dd7720"
+      },
+      {
+        "__uuid__": "5941f8f4-b609-4ba0-a414-13896b533ee8"
+      },
+      {
+        "__uuid__": "f3981fe1-c0bb-4a58-b593-c9f8745520f2"
+      },
+      {
+        "__uuid__": "1fcfa83f-73fb-4e0d-9827-6b120edc63ea"
+      }
+    ],
+    "playOnLoad": false,
     "_id": ""
   },
   {

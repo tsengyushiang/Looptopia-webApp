@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "play_moveup",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "250e7ae0-625d-4bb4-885f-efbf2346fed5"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "d7126e15-bca9-4d19-a563-b590be91f8e4"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "0d373be7-753f-47b6-b72b-74b39b2fc8c4"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

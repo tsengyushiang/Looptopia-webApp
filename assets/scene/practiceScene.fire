@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.22891004349835675,
-      "y": 0.22891004349835675,
+      "x": 1.4268687825797297,
+      "y": 1.4268687825797297,
       "z": 1
     },
     "_quat": {
@@ -341,14 +341,14 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -42,
-      "y": -59,
+      "x": -41.3,
+      "y": -50.6,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.83,
+      "y": 0.83,
       "z": 1
     },
     "_rotationX": 0,
@@ -3304,7 +3304,7 @@
     },
     "showTimeBar": false,
     "nextSceneName": "playingScene",
-    "countDown_second": 500,
+    "countDown_second": 5,
     "onBegin": [],
     "onFinish": [],
     "_id": "51KSUaShtK9KANGLtOaqjt"
@@ -3603,7 +3603,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 1,
     "_components": [
       {

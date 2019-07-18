@@ -76,21 +76,22 @@ export default class MovingController extends cc.Component {
                 break;
         }
 
+
         switch (this.currentMovingType) {
             case cc.macro.KEY.w:
-                if (this.animator.currentClip != this.moveUp)
+                if (this.animator.getAnimationState("moveup").isPlaying == false)
                     this.animator.play('moveup');
                 break;
             case cc.macro.KEY.s:
-                if (this.animator.currentClip != this.moveDown)
+                if (this.animator.getAnimationState("movedown").isPlaying == false)
                     this.animator.play('movedown');
                 break;
             case cc.macro.KEY.a:
-                if (this.animator.currentClip != this.moveLeft)
+                if (this.animator.getAnimationState("moveleft").isPlaying == false)
                     this.animator.play('moveleft');
                 break;
             case cc.macro.KEY.d:
-                if (this.animator.currentClip != this.moveRight)
+                if (this.animator.getAnimationState("moveright").isPlaying == false)
                     this.animator.play('moveright');
                 break;
             default:
@@ -131,7 +132,7 @@ export default class MovingController extends cc.Component {
         }
     }
 
-    onBeginContact(contact,selfCollider,otherCollider) {
-        console.log(contact,selfCollider,otherCollider);
+    onBeginContact(contact, selfCollider, otherCollider) {
+        console.log(contact, selfCollider, otherCollider);
     }
 }
