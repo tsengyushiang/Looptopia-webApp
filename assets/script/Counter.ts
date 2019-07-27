@@ -1,6 +1,6 @@
 
 const { ccclass, property } = cc._decorator;
-cc.Button
+
 @ccclass
 export default class Counter extends cc.Component {
 
@@ -60,6 +60,10 @@ export default class Counter extends cc.Component {
 
 
     timeUp() {
+
+        this.onFinish.forEach(funcs => {
+            funcs.emit();
+        })
 
         cc.director.loadScene(this.nextSceneName);
 

@@ -1,44 +1,31 @@
 import axios from "axios"
 
-const { ccclass, property } = cc._decorator;
-
-@ccclass
-export default class NetworkManger extends cc.Component {
-
-    @property(cc.Label)
-    label: cc.Label = null;
-
-    @property
-    text: string = 'hello';
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-    start() {
-
-    }
+export default class NetworkManger {
 
     // update (dt) {}
 
-    saveFile(data: Blob) {
+    static saveFile(dataString: string, callBack: Function) {
 
-        var myReader = new FileReader();
+    
+        axios.get('https://script.google.com/macros/s/AKfycbybBFcLXv_lQ-KNnxg_SUOWEIVHdmC__PTBqpB9Sg/exec',
+            {
+                headers: {"Access-Control-Allow-Origin": "*"},
+                params: {
+                    data: dataString
+                }
+            }
+        ).then(function (response) {
 
-        myReader.addEventListener("loadend", function (e) {
- 
-            var params = new URLSearchParams();
-            params.append('data', e.srcElement["result"]);
-            axios.post('/php_records/save.php', params)
-                .then(res => {
-                    console.log("Response : ", res);
-                }).catch(e => {
-                    console.log("Error : ", e);
-                })
+            /*
+            let data = [];
 
-        });
-
-        myReader.readAsDataURL(data);
-
+            response.data.forEach(element => {
+                data.push(JSON.parse(element));
+            });
+            */
+            callBack(response)
+        }).catch(function (err) {
+            console.log("Error : ", err);
+        })
     }
 }
