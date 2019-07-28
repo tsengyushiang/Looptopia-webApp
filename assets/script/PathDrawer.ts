@@ -25,12 +25,12 @@ export default class PathDrawer extends cc.Component {
         //this.path = this.getComponent(PathRecorder).getPath();
 
         let self = this;
-        NetworkManger.saveFile("", function (res) {
+        NetworkManger.getAllRecords(function (res) {
             self.path = res[res.length - 1];
         })
         this.graphics = this.getComponent(cc.Graphics);
     }
-    
+
     update(dt) {
 
         if (this.path.length <= 0) return;

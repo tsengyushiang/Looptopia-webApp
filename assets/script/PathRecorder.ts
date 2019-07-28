@@ -42,9 +42,7 @@ export default class PathRecorder extends cc.Component {
 
     passPathToServer() {
 
-        NetworkManger.saveFile(JSON.stringify(window["path"]), function (res) {
-            console.log(res);
-        })
+        NetworkManger.saveFile(JSON.stringify(window["path"]));
     }
 
 }
