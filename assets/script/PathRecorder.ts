@@ -7,14 +7,23 @@ const { ccclass, property } = cc._decorator;
 export default class PathRecorder extends cc.Component {
 
 
+    @property
+    recordFPS = 0.1;
+
+
     @property(cc.Node)
     target: cc.Node = null;
+
+
+    accumulateTime = 0;
 
     onLoad() {
 
         if (!window.hasOwnProperty("path")) {
             this.init()
         }
+
+        this.accumulateTime = 0;
     }
 
     init() {
@@ -25,10 +34,16 @@ export default class PathRecorder extends cc.Component {
 
     update(dt) {
 
-        if (this.target && (
-            window["path"].length == 0 ||
-            window["path"][window["path"].length - 1] != this.target.position)
-        ) {
+        let timeUnit = 1000;
+        let recordSampleTime = timeUnit / this.recordFPS;
+        this.accumulateTime += dt;
+        let accumulateTimeMiniSecond = Math.round(this.accumulateTime * timeUnit);
+
+        if (accumulateTimeMiniSecond <= recordSampleTime) return;
+        
+        this.accumulateTime = 0;
+
+        if (this.target){
 
             window["path"].push(this.target.position);
         }

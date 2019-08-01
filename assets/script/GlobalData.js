@@ -3,8 +3,19 @@ window.day = 0;
 window.path = [];
 
 
-function getRequestCallBack(data) {
+window.requestOnFinishedFunction = function () { };
 
-    console.log("response : ", data);
+function getRequestCallBack(dataArr) {
+
+
+    let data = [];
+
+    dataArr.forEach(element => {
+        data.push(JSON.parse(element));
+    });
+
+    window.requestOnFinishedFunction(data);
+    window.requestOnFinishedFunction = function () { };
 
 }
+

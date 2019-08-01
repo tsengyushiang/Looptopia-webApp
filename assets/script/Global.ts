@@ -5,32 +5,46 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class Global extends cc.Component {
 
+    @property(cc.Label)
+    dayString: cc.Label = null;
+
+    @property(cc.Node)
+    ui: cc.Node = null;
+
+
     // GlobalManger
     public static get Instance() {
         return this;
     }
 
-    networkManger: NetworkManger;
     recorder: any;
+
 
     onLoad() {
 
 
-        this.recorder = new CanvasRecorder(document.getElementById("GameCanvas"))
-        this.networkManger = new NetworkManger();
-        
+        //this.recorder = new CanvasRecorder(document.getElementById("GameCanvas"))
+        let self = this;
+        NetworkManger.getAllRecords(function (data: any) {
+            self.dayString.string = data.length.toString();
+
+            self.ui.active = true;
+            self.node.runAction(cc.fadeOut(1))
+
+        });
+
     }
-
-    startRecord() {
-        this.recorder.start();
-    }
-
-    endRecord() {
-
-        this.networkManger.saveFile(this.recorder.getBlob());
-        this.recorder.stop();
-    }
-
+    /*
+        startRecord() {
+            this.recorder.start();
+        }
+    
+        endRecord() {
+    
+            this.networkManger.saveFile(this.recorder.getBlob());
+            this.recorder.stop();
+        }
+    */
     GoPracticeScene() {
         cc.director.loadScene("practiceScene");
 
@@ -47,7 +61,7 @@ export default class Global extends cc.Component {
         cc.director.loadScene("startMenu");
 
     }
-    exit(){
+    exit() {
         cc.game.end();
     }
 
