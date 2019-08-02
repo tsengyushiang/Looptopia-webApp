@@ -26,7 +26,7 @@ export default class Global extends cc.Component {
         //this.recorder = new CanvasRecorder(document.getElementById("GameCanvas"))
         let self = this;
         NetworkManger.getAllRecords(function (data: any) {
-            self.dayString.string = data.length.toString();
+            self.dayString.string = (data.length + 1).toString();
 
             self.ui.active = true;
             self.node.runAction(cc.fadeOut(1))
@@ -46,7 +46,14 @@ export default class Global extends cc.Component {
         }
     */
     GoPracticeScene() {
-        cc.director.loadScene("practiceScene");
+
+        let finished = cc.callFunc(function () {
+            cc.director.loadScene("practiceScene");
+        });
+
+        var seq = cc.sequence(cc.fadeIn(1), finished);
+        this.node.runAction(seq)
+
 
     }
     GoGameScene() {

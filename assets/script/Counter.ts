@@ -16,6 +16,8 @@ export default class Counter extends cc.Component {
     @property
     countDown_second: number = 0;
 
+    @property(cc.Node)
+    active_whenStart = []
 
     @property(cc.Animation)
     startAnimation = null;
@@ -40,13 +42,27 @@ export default class Counter extends cc.Component {
 
     start() {
 
+        let self = this;
+
+        let startfunc = function () {
+
+            self.startTimer();
+            self.active_whenStart.forEach(node => {
+                node.active = true;
+            })
+
+            if (self.startAnimation) {
+                self.startAnimation.node.active = false;
+            }
+            
+        }
+
         if (this.startAnimation) {
 
-            let self = this;
 
             let onFinished = function () {
 
-                self.startTimer();
+                startfunc();
                 self.startAnimation.off('finished', onFinished, this);
             }
 
@@ -54,7 +70,7 @@ export default class Counter extends cc.Component {
             this.startAnimation.play();
         }
         else {
-            this.startTimer();
+            startfunc()
         }
 
     }
