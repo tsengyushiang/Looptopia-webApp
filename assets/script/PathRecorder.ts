@@ -40,10 +40,10 @@ export default class PathRecorder extends cc.Component {
         let accumulateTimeMiniSecond = Math.round(this.accumulateTime * timeUnit);
 
         if (accumulateTimeMiniSecond <= recordSampleTime) return;
-        
+
         this.accumulateTime = 0;
 
-        if (this.target){
+        if (this.target) {
 
             window["path"].push(this.target.position);
         }
@@ -57,7 +57,8 @@ export default class PathRecorder extends cc.Component {
 
     passPathToServer() {
 
-        NetworkManger.saveFile(JSON.stringify(window["path"]));
+        console.log(window["path"]);
+        //NetworkManger.saveFile(JSON.stringify(window["path"]));
     }
 
 }

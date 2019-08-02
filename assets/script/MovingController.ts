@@ -14,6 +14,13 @@ export default class MovingController extends cc.Component {
     moveRight = null;
     @property(cc.AnimationClip)
     moveLeft = null;
+    @property(cc.AnimationClip)
+    eat = null;
+    @property(cc.AnimationClip)
+    nod = null;
+
+    @property(cc.Node)
+    targetPositionNode = null;
 
     animator: cc.Animation;
     rigibody: cc.RigidBody;
@@ -51,30 +58,15 @@ export default class MovingController extends cc.Component {
         this.animator.addClip(this.moveDown, 'movedown');
         this.animator.addClip(this.moveRight, 'moveright');
         this.animator.addClip(this.moveLeft, 'moveleft');
-
+        this.animator.addClip(this.eat, 'eat');
+        this.animator.addClip(this.nod, 'nod');
     }
 
     update(dt) {
 
         dt *= 10000;
-        switch (this.currentMovingType) {
-            case cc.macro.KEY.w:
-                this.rigibody.linearVelocity = cc.v2(0, Math.abs(this.stepSize * dt));
-                break;
-            case cc.macro.KEY.s:
-                this.rigibody.linearVelocity = cc.v2(0, -Math.abs(this.stepSize * dt));
-                break;
-            case cc.macro.KEY.a:
-                this.rigibody.linearVelocity = cc.v2(-Math.abs(this.stepSize * dt), 0);
-                break;
-            case cc.macro.KEY.d:
-                this.rigibody.linearVelocity = cc.v2(Math.abs(this.stepSize * dt), 0);
-                break;
-            default:
-                this.rigibody.linearVelocity = cc.v2(0, 0);
-                break;
-        }
 
+        if (this.node.getNumberOfRunningActions()) return;
 
         switch (this.currentMovingType) {
             case cc.macro.KEY.w:
@@ -98,6 +90,68 @@ export default class MovingController extends cc.Component {
                 break;
         }
 
+        switch (this.currentMovingType) {
+            case cc.macro.KEY.w:
+                this.rigibody.linearVelocity = cc.v2(0, Math.abs(this.stepSize * dt));
+                break;
+            case cc.macro.KEY.s:
+                this.rigibody.linearVelocity = cc.v2(0, -Math.abs(this.stepSize * dt));
+                break;
+            case cc.macro.KEY.a:
+                this.rigibody.linearVelocity = cc.v2(-Math.abs(this.stepSize * dt), 0);
+                break;
+            case cc.macro.KEY.d:
+                this.rigibody.linearVelocity = cc.v2(Math.abs(this.stepSize * dt), 0);
+                break;
+            case cc.macro.KEY.space:
+
+                this.rigibody.linearVelocity = cc.v2(0, 0);
+
+                let self = this;
+                let goEat = cc.sequence(
+                    cc.callFunc(function () {
+
+                        if (self.node.position.y - self.targetPositionNode.y > 1e-5) {
+                            if (self.animator.getAnimationState("movedown").isPlaying == false)
+                                self.animator.play('movedown');
+                        }
+                        else if (self.node.position.y - self.targetPositionNode.y < -1e-5) {
+                            if (self.animator.getAnimationState("moveup").isPlaying == false)
+                                self.animator.play('moveup');
+                        }
+
+                    }),
+                    cc.moveTo(
+                        Math.abs(this.node.position.y - this.targetPositionNode.y) / (this.stepSize * dt),
+                        cc.v2(this.node.position.x, this.targetPositionNode.y)),
+                    cc.callFunc(function () {
+
+                        if (self.node.position.x - self.targetPositionNode.x > 1e-5) {
+                            if (self.animator.getAnimationState("moveleft").isPlaying == false)
+                                self.animator.play('moveleft');
+                        }
+                        else if (self.node.position.x - self.targetPositionNode.x < -1e-5) {
+                            if (self.animator.getAnimationState("moveright").isPlaying == false)
+                                self.animator.play('moveright');
+                        }
+
+                    }),
+                    cc.moveTo(
+                        Math.abs(this.node.position.x - this.targetPositionNode.x) / (this.stepSize * dt),
+                        cc.v2(this.targetPositionNode.x, this.targetPositionNode.y))
+                    ,
+                    cc.callFunc(function () {
+                        self.animator.play('eat');
+                    }),
+                );
+
+                this.node.runAction(goEat);
+                this.currentMovingType = null
+                break;
+            default:
+                this.rigibody.linearVelocity = cc.v2(0, 0);
+                break;
+        }
     }
 
 
@@ -109,6 +163,7 @@ export default class MovingController extends cc.Component {
             case cc.macro.KEY.s:
             case cc.macro.KEY.a:
             case cc.macro.KEY.d:
+            case cc.macro.KEY.space:
 
                 this.currentMovingType = event.keyCode;
                 break;
