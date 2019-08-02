@@ -16,6 +16,14 @@ export default class Counter extends cc.Component {
     @property
     countDown_second: number = 0;
 
+
+    @property(cc.Animation)
+    startAnimation = null;
+
+    @property(cc.Animation)
+    endAnimation = null;
+
+
     @property(cc.Component.EventHandler)
     onBegin = [];
 
@@ -32,17 +40,32 @@ export default class Counter extends cc.Component {
 
     start() {
 
-        this.startTimer();
+        if (this.startAnimation) {
+
+            let self = this;
+
+            let onFinished = function () {
+
+                self.startTimer();
+                self.startAnimation.off('finished', onFinished, this);
+            }
+
+            this.startAnimation.on('finished', onFinished, this);
+            this.startAnimation.play();
+        }
+        else {
+            this.startTimer();
+        }
+
     }
 
 
     startTimer() {
 
-
         let currentTime = 0;
         let onFinish = function () {
 
-            if (currentTime === this.countDown_second) {
+            if (currentTime >= this.countDown_second) {
 
                 this.unschedule(onFinish);
                 this.timeUp();
@@ -52,6 +75,7 @@ export default class Counter extends cc.Component {
             this.timeBar.progress = 1 - currentTime / this.countDown_second;
 
             currentTime++;
+
         }
 
         this.schedule(onFinish, 1);
@@ -61,19 +85,33 @@ export default class Counter extends cc.Component {
 
     timeUp() {
 
-        this.onFinish.forEach(funcs => {
-            funcs.emit();
-        })
+        let self = this;
 
-        cc.director.loadScene(this.nextSceneName);
 
+        let endScenefunc = function () {
+
+            self.onFinish.forEach(funcs => {
+                funcs.emit();
+            })
+
+            cc.director.loadScene(self.nextSceneName);
+        }
+
+        if (this.endAnimation) {
+
+
+            let onFinished = function () {
+
+                endScenefunc();
+                self.endAnimation.off('finished', onFinished, this);
+            }
+
+            this.endAnimation.on('finished', onFinished, this);
+            this.endAnimation.play();
+        }
+        else {
+            endScenefunc()
+        }
     }
 
-
-
-    update(dt) {
-
-        cc.log(1234);
-
-    }
 }
