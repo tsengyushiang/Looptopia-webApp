@@ -45,7 +45,7 @@ export default class Counter extends cc.Component {
         let self = this;
 
         let startfunc = function () {
-
+            
             self.startTimer();
             self.active_whenStart.forEach(node => {
                 node.active = true;

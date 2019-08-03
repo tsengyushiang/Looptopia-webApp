@@ -1,4 +1,5 @@
 
+window.nodCount = 0;
 window.day = 0;
 window.path = [];
 

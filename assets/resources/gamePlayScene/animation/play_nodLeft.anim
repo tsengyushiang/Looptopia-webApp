@@ -1,12 +1,12 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "play_movedown",
+  "_name": "play_nodLeft",
   "_objFlags": 0,
   "_native": "",
   "_duration": 0.6,
   "sample": 5,
   "speed": 1,
-  "wrapMode": "1",
+  "wrapMode": 1,
   "curveData": {
     "comps": {
       "cc.Sprite": {
@@ -14,19 +14,19 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "f16cd6f7-514d-4eb8-80e2-d5c9da9548e4"
+              "__uuid__": "f6e82adb-c2e5-4088-a9b6-161817a7ceed"
             }
           },
           {
             "frame": 0.2,
             "value": {
-              "__uuid__": "9372eee2-d75c-4d6d-837a-b909dd44a3e5"
+              "__uuid__": "4c8648b2-ca49-4374-b930-197c4814d447"
             }
           },
           {
             "frame": 0.4,
             "value": {
-              "__uuid__": "fdb9f7bd-ee2f-42cd-8590-a9a0f67f71db"
+              "__uuid__": "f6e82adb-c2e5-4088-a9b6-161817a7ceed"
             }
           }
         ]

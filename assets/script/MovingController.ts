@@ -17,7 +17,16 @@ export default class MovingController extends cc.Component {
     @property(cc.AnimationClip)
     eat = null;
     @property(cc.AnimationClip)
-    nod = null;
+    nodright = null;
+    @property(cc.AnimationClip)
+    nodleft = null;
+    @property(cc.AnimationClip)
+    nodfront = null;
+    @property(cc.AnimationClip)
+    nodback = null;
+
+    @property(cc.Node)
+    potFood = null;
 
     @property(cc.Node)
     targetPositionNode = null;
@@ -25,7 +34,10 @@ export default class MovingController extends cc.Component {
     animator: cc.Animation;
     rigibody: cc.RigidBody;
     currentMovingType: number = null;
-
+    disableDetectInput: boolean = false;
+    spaceFunc: Function = null;
+    // 'right','left','front','back'
+    latestDirection: string;
     onLoad() {
 
 
@@ -59,103 +71,157 @@ export default class MovingController extends cc.Component {
         this.animator.addClip(this.moveRight, 'moveright');
         this.animator.addClip(this.moveLeft, 'moveleft');
         this.animator.addClip(this.eat, 'eat');
-        this.animator.addClip(this.nod, 'nod');
+
+        if (this.nodback && this.nodfront && this.nodleft && this.nodright) {
+            //nod
+            this.animator.addClip(this.nodright, 'right');
+            this.animator.addClip(this.nodleft, 'left');
+            this.animator.addClip(this.nodfront, 'front');
+            this.animator.addClip(this.nodback, 'back');
+            this.latestDirection = 'right';
+        }
+
+        this.spaceFunc = this.goNod;
+        window["nodCount"] = 0;
+
     }
 
     update(dt) {
 
         dt *= 10000;
 
-        if (this.node.getNumberOfRunningActions()) return;
-
-        switch (this.currentMovingType) {
-            case cc.macro.KEY.w:
-                if (this.animator.getAnimationState("moveup").isPlaying == false)
-                    this.animator.play('moveup');
-                break;
-            case cc.macro.KEY.s:
-                if (this.animator.getAnimationState("movedown").isPlaying == false)
-                    this.animator.play('movedown');
-                break;
-            case cc.macro.KEY.a:
-                if (this.animator.getAnimationState("moveleft").isPlaying == false)
-                    this.animator.play('moveleft');
-                break;
-            case cc.macro.KEY.d:
-                if (this.animator.getAnimationState("moveright").isPlaying == false)
-                    this.animator.play('moveright');
-                break;
-            default:
-                this.animator.stop();
-                break;
-        }
-
         switch (this.currentMovingType) {
             case cc.macro.KEY.w:
                 this.rigibody.linearVelocity = cc.v2(0, Math.abs(this.stepSize * dt));
+                if (this.animator.getAnimationState("moveup").isPlaying == false)
+                    this.animator.play('moveup');
+
+                this.latestDirection = 'back';
                 break;
             case cc.macro.KEY.s:
                 this.rigibody.linearVelocity = cc.v2(0, -Math.abs(this.stepSize * dt));
+                if (this.animator.getAnimationState("movedown").isPlaying == false)
+                    this.animator.play('movedown');
+
+                this.latestDirection = 'front';
                 break;
             case cc.macro.KEY.a:
                 this.rigibody.linearVelocity = cc.v2(-Math.abs(this.stepSize * dt), 0);
+                if (this.animator.getAnimationState("moveleft").isPlaying == false)
+                    this.animator.play('moveleft');
+
+                this.latestDirection = 'left';
                 break;
             case cc.macro.KEY.d:
                 this.rigibody.linearVelocity = cc.v2(Math.abs(this.stepSize * dt), 0);
+                if (this.animator.getAnimationState("moveright").isPlaying == false)
+                    this.animator.play('moveright');
+
+                this.latestDirection = 'right';
+
                 break;
             case cc.macro.KEY.space:
-
                 this.rigibody.linearVelocity = cc.v2(0, 0);
 
-                let self = this;
-                let goEat = cc.sequence(
-                    cc.callFunc(function () {
-
-                        if (self.node.position.y - self.targetPositionNode.y > 1e-5) {
-                            if (self.animator.getAnimationState("movedown").isPlaying == false)
-                                self.animator.play('movedown');
-                        }
-                        else if (self.node.position.y - self.targetPositionNode.y < -1e-5) {
-                            if (self.animator.getAnimationState("moveup").isPlaying == false)
-                                self.animator.play('moveup');
-                        }
-
-                    }),
-                    cc.moveTo(
-                        Math.abs(this.node.position.y - this.targetPositionNode.y) / (this.stepSize * dt),
-                        cc.v2(this.node.position.x, this.targetPositionNode.y)),
-                    cc.callFunc(function () {
-
-                        if (self.node.position.x - self.targetPositionNode.x > 1e-5) {
-                            if (self.animator.getAnimationState("moveleft").isPlaying == false)
-                                self.animator.play('moveleft');
-                        }
-                        else if (self.node.position.x - self.targetPositionNode.x < -1e-5) {
-                            if (self.animator.getAnimationState("moveright").isPlaying == false)
-                                self.animator.play('moveright');
-                        }
-
-                    }),
-                    cc.moveTo(
-                        Math.abs(this.node.position.x - this.targetPositionNode.x) / (this.stepSize * dt),
-                        cc.v2(this.targetPositionNode.x, this.targetPositionNode.y))
-                    ,
-                    cc.callFunc(function () {
-                        self.animator.play('eat');
-                    }),
-                );
-
-                this.node.runAction(goEat);
-                this.currentMovingType = null
+                this.spaceFunc(dt);
+                this.currentMovingType = cc.macro.KEY.escape;
+                break;
+            case cc.macro.KEY.escape:
+                // idle
                 break;
             default:
                 this.rigibody.linearVelocity = cc.v2(0, 0);
+                this.animator.stop();
                 break;
         }
     }
 
+    goEat(dt) {
+
+        this.disableDetectInput = true;
+        let self = this;
+        let goEat = cc.sequence(
+            cc.callFunc(function () {
+
+                if (self.node.position.y - self.targetPositionNode.y > 1e-5) {
+                    if (self.animator.getAnimationState("movedown").isPlaying == false)
+                        self.animator.play('movedown');
+                }
+                else if (self.node.position.y - self.targetPositionNode.y < -1e-5) {
+                    if (self.animator.getAnimationState("moveup").isPlaying == false)
+                        self.animator.play('moveup');
+                }
+
+            }),
+            cc.moveTo(
+                Math.abs(this.node.position.y - this.targetPositionNode.y) / (this.stepSize * dt),
+                cc.v2(this.node.position.x, this.targetPositionNode.y)),
+            cc.callFunc(function () {
+
+                if (self.node.position.x - self.targetPositionNode.x > 1e-5) {
+                    if (self.animator.getAnimationState("moveleft").isPlaying == false)
+                        self.animator.play('moveleft');
+                }
+                else if (self.node.position.x - self.targetPositionNode.x < -1e-5) {
+                    if (self.animator.getAnimationState("moveright").isPlaying == false)
+                        self.animator.play('moveright');
+                }
+
+            }),
+            cc.moveTo(
+                Math.abs(this.node.position.x - this.targetPositionNode.x) / (this.stepSize * dt),
+                cc.v2(this.targetPositionNode.x, this.targetPositionNode.y))
+            ,
+            cc.callFunc(function () {
+
+
+                let onFinished = function () {
+
+                    self.disableDetectInput = false;
+                    self.potFood.destroy();
+                    self.spaceFunc = self.goNod;
+                    self.latestDirection = 'back';
+
+                    self.animator.off('finished', onFinished, this);
+                }
+
+                self.animator.on('finished', onFinished, this);
+                self.animator.play('eat');
+
+            }),
+        );
+
+        this.node.runAction(goEat);
+    }
+
+    goNod(dt) {
+
+        if (this.animator.getAnimationState("left").isPlaying == true) return;
+        if (this.animator.getAnimationState("right").isPlaying == true) return;
+        if (this.animator.getAnimationState("front").isPlaying == true) return;
+        if (this.animator.getAnimationState("back").isPlaying == true) return;
+
+        window["nodCount"]++;
+
+
+        let self = this;
+
+        this.disableDetectInput = true;
+
+        let onFinished = function () {
+
+            self.disableDetectInput = false;
+            self.animator.off('finished', onFinished, this);
+        }
+
+        self.animator.on('finished', onFinished, this);
+        self.animator.play(this.latestDirection);
+    }
+
 
     onKeyDown(event) {
+
+        if (this.disableDetectInput) return;
 
         switch (event.keyCode) {
 
@@ -173,6 +239,8 @@ export default class MovingController extends cc.Component {
 
     onKeyUp(event) {
 
+        if (this.disableDetectInput) return;
+
         switch (event.keyCode) {
 
             case cc.macro.KEY.w:
@@ -187,6 +255,16 @@ export default class MovingController extends cc.Component {
     }
 
     onBeginContact(contact, selfCollider, otherCollider) {
-        console.log(contact, selfCollider, otherCollider);
+
+        if (otherCollider.node == this.potFood) {
+            this.spaceFunc = this.goEat;
+        }
+    }
+
+    onEndContact(contact, selfCollider, otherCollider) {
+        if (otherCollider.node == this.potFood) {
+            this.spaceFunc = this.goNod;
+
+        }
     }
 }
