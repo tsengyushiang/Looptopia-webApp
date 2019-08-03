@@ -45,7 +45,7 @@ export default class Counter extends cc.Component {
         let self = this;
 
         let startfunc = function () {
-            
+
             self.startTimer();
             self.active_whenStart.forEach(node => {
                 node.active = true;
@@ -54,7 +54,7 @@ export default class Counter extends cc.Component {
             if (self.startAnimation) {
                 self.startAnimation.node.active = false;
             }
-            
+
         }
 
         if (this.startAnimation) {
@@ -103,30 +103,19 @@ export default class Counter extends cc.Component {
 
         let self = this;
 
-
-        let endScenefunc = function () {
-
-            self.onFinish.forEach(funcs => {
-                funcs.emit();
-            })
-
-            cc.director.loadScene(self.nextSceneName);
-        }
+        self.onFinish.forEach(funcs => {
+            funcs.emit();
+        })
 
         if (this.endAnimation) {
 
 
             let onFinished = function () {
-
-                endScenefunc();
-                self.endAnimation.off('finished', onFinished, this);
+                cc.director.loadScene(self.nextSceneName);
             }
 
             this.endAnimation.on('finished', onFinished, this);
             this.endAnimation.play();
-        }
-        else {
-            endScenefunc()
         }
     }
 

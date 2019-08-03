@@ -25,8 +25,15 @@ export default class MovingController extends cc.Component {
     @property(cc.AnimationClip)
     nodback = null;
 
+    @property(cc.AnimationClip)
+    sit = null;
+
     @property(cc.Node)
     potFood = null;
+    @property(cc.Node)
+    hint_nod = null;
+    @property(cc.Node)
+    hint_eat = null;
 
     @property(cc.Node)
     targetPositionNode = null;
@@ -71,6 +78,8 @@ export default class MovingController extends cc.Component {
         this.animator.addClip(this.moveRight, 'moveright');
         this.animator.addClip(this.moveLeft, 'moveleft');
         this.animator.addClip(this.eat, 'eat');
+        this.animator.addClip(this.sit, 'sit');
+
 
         if (this.nodback && this.nodfront && this.nodleft && this.nodright) {
             //nod
@@ -134,6 +143,25 @@ export default class MovingController extends cc.Component {
                 this.animator.stop();
                 break;
         }
+    }
+
+    goSit() {
+
+        let self = this;
+        this.rigibody.linearVelocity = cc.v2(0, 0);
+
+        this.disableDetectInput = true;
+        this.currentMovingType = cc.macro.KEY.escape
+
+        let onFinished = function () {
+
+            self.disableDetectInput = false;
+            self.animator.off('finished', onFinished, this);
+        }
+
+        self.animator.on('finished', onFinished, this);
+        self.animator.play('sit');
+
     }
 
     goEat(dt) {
@@ -257,12 +285,17 @@ export default class MovingController extends cc.Component {
     onBeginContact(contact, selfCollider, otherCollider) {
 
         if (otherCollider.node == this.potFood) {
+            this.hint_eat.active = true;
+            this.hint_nod.active = false;
             this.spaceFunc = this.goEat;
         }
     }
 
     onEndContact(contact, selfCollider, otherCollider) {
         if (otherCollider.node == this.potFood) {
+
+            this.hint_nod.active = true;
+            this.hint_eat.active = false;
             this.spaceFunc = this.goNod;
 
         }
