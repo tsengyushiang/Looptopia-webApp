@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.3072916666666667,
+      "y": 0.3072916666666667,
       "z": 1
     },
     "_quat": {
@@ -86,10 +86,10 @@
         "__id__": 5
       },
       {
-        "__id__": 74
+        "__id__": 75
       },
       {
-        "__id__": 76
+        "__id__": 77
       },
       {
         "__id__": 64
@@ -102,7 +102,7 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 78
+        "__id__": 79
       }
     ],
     "_prefab": null,
@@ -2145,9 +2145,9 @@
       "__id__": 49
     },
     "_enabled": true,
-    "recordFPS": 10,
+    "recordFPS": 5,
     "target": {
-      "__id__": 5
+      "__id__": 8
     },
     "_id": "b6EaPAToND5YqltVnVEHOR"
   },
@@ -2171,7 +2171,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 73
+      "__id__": 74
     },
     "_opacity": 255,
     "_color": {
@@ -2636,6 +2636,9 @@
       },
       {
         "__id__": 72
+      },
+      {
+        "__id__": 73
       }
     ],
     "_id": "cddFJUqttNEq0MIu7toYoB"
@@ -3013,6 +3016,16 @@
     "customEventData": ""
   },
   {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 49
+    },
+    "component": "",
+    "_componentId": "7acceozVY5M2KuBhpbSj2sC",
+    "handler": "destroy",
+    "customEventData": ""
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 51
@@ -3035,7 +3048,7 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 75
+        "__id__": 76
       }
     ],
     "_prefab": null,
@@ -3088,7 +3101,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 74
+      "__id__": 75
     },
     "_enabled": true,
     "_cullingMask": 4294967295,
@@ -3117,7 +3130,7 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 77
+        "__id__": 78
       }
     ],
     "_prefab": null,
@@ -3170,7 +3183,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 76
+      "__id__": 77
     },
     "_enabled": true,
     "_srcBlendFactor": 770,

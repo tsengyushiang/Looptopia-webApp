@@ -149,7 +149,7 @@ export default class MovingController extends cc.Component {
 
         let self = this;
         this.rigibody.linearVelocity = cc.v2(0, 0);
-
+        this.node.stopAllActions();
         this.disableDetectInput = true;
         this.currentMovingType = cc.macro.KEY.escape
 
@@ -163,7 +163,22 @@ export default class MovingController extends cc.Component {
         self.animator.play('sit');
 
     }
+    getCurrentAction(): string {
 
+
+        let animationList = [
+            'moveup', 'movedown', 'moveright', 'moveleft',
+            'eat', 'sit',
+            'right', 'left', 'front', 'back'
+        ]
+
+        for (let i = 0; i < animationList.length; i++) {
+            if (this.animator.getAnimationState(animationList[i]).isPlaying == true)
+                return animationList[i];
+        }
+
+        return '';
+    }
     goEat(dt) {
 
         this.disableDetectInput = true;

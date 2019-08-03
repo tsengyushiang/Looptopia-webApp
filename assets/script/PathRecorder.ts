@@ -1,4 +1,5 @@
 import NetworkManger from "./NetWrokManger";
+import MovingController from "./MovingController";
 
 const { ccclass, property } = cc._decorator;
 
@@ -11,8 +12,8 @@ export default class PathRecorder extends cc.Component {
     recordFPS = 0.1;
 
 
-    @property(cc.Node)
-    target: cc.Node = null;
+    @property(MovingController)
+    target: MovingController = null;
 
 
     accumulateTime = 0;
@@ -45,7 +46,11 @@ export default class PathRecorder extends cc.Component {
 
         if (this.target) {
 
-            window["path"].push(this.target.position);
+            window["path"].push({
+                pos: this.target.node.position,
+                animation: this.target.getCurrentAction()
+            });
+
         }
     }
 
@@ -56,9 +61,7 @@ export default class PathRecorder extends cc.Component {
     }
 
     passPathToServer() {
-
-        console.log(window["path"]);
-        //NetworkManger.saveFile(JSON.stringify(window["path"]));
+        NetworkManger.saveFile(JSON.stringify(window["path"]));
     }
 
 }

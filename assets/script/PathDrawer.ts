@@ -26,6 +26,7 @@ export default class PathDrawer extends cc.Component {
 
         let self = this;
         NetworkManger.getAllRecords(function (res) {
+            console.log(res)
             self.path = res[res.length - 1];
         })
         this.graphics = this.getComponent(cc.Graphics);
@@ -48,12 +49,12 @@ export default class PathDrawer extends cc.Component {
         if (this.drawPath && index > 0 && index < this.path.length) {
 
             this.graphics.moveTo(
-                this.path[preindex].x,
-                this.path[preindex].y);
+                this.path[preindex].pos.x,
+                this.path[preindex].pos.y);
 
             this.graphics.lineTo(
-                this.path[index].x,
-                this.path[index].y);
+                this.path[index].pos.x,
+                this.path[index].pos.y);
 
             this.graphics.stroke();
 
