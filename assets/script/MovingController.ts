@@ -100,28 +100,28 @@ export default class MovingController extends cc.Component {
         dt *= 10000;
 
         switch (this.currentMovingType) {
-            case cc.macro.KEY.w:
+            case cc.macro.KEY.up:
                 this.rigibody.linearVelocity = cc.v2(0, Math.abs(this.stepSize * dt));
                 if (this.animator.getAnimationState("moveup").isPlaying == false)
                     this.animator.play('moveup');
 
                 this.latestDirection = 'back';
                 break;
-            case cc.macro.KEY.s:
+            case cc.macro.KEY.down:
                 this.rigibody.linearVelocity = cc.v2(0, -Math.abs(this.stepSize * dt));
                 if (this.animator.getAnimationState("movedown").isPlaying == false)
                     this.animator.play('movedown');
 
                 this.latestDirection = 'front';
                 break;
-            case cc.macro.KEY.a:
+            case cc.macro.KEY.left:
                 this.rigibody.linearVelocity = cc.v2(-Math.abs(this.stepSize * dt), 0);
                 if (this.animator.getAnimationState("moveleft").isPlaying == false)
                     this.animator.play('moveleft');
 
                 this.latestDirection = 'left';
                 break;
-            case cc.macro.KEY.d:
+            case cc.macro.KEY.right:
                 this.rigibody.linearVelocity = cc.v2(Math.abs(this.stepSize * dt), 0);
                 if (this.animator.getAnimationState("moveright").isPlaying == false)
                     this.animator.play('moveright');
@@ -276,10 +276,10 @@ export default class MovingController extends cc.Component {
 
         switch (event.keyCode) {
 
-            case cc.macro.KEY.w:
-            case cc.macro.KEY.s:
-            case cc.macro.KEY.a:
-            case cc.macro.KEY.d:
+            case cc.macro.KEY.up:
+            case cc.macro.KEY.down:
+            case cc.macro.KEY.left:
+            case cc.macro.KEY.right:
             case cc.macro.KEY.space:
 
                 this.currentMovingType = event.keyCode;
@@ -294,10 +294,10 @@ export default class MovingController extends cc.Component {
 
         switch (event.keyCode) {
 
-            case cc.macro.KEY.w:
-            case cc.macro.KEY.s:
-            case cc.macro.KEY.a:
-            case cc.macro.KEY.d:
+            case cc.macro.KEY.up:
+            case cc.macro.KEY.down:
+            case cc.macro.KEY.left:
+            case cc.macro.KEY.right:
 
                 if (this.currentMovingType == event.keyCode)
                     this.currentMovingType = null;

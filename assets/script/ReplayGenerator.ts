@@ -1,5 +1,6 @@
 import NetworkManger from "./NetWrokManger";
 import Replay_min from "./Replay_min";
+import RunNumber from "./NumberIcrease";
 
 const { ccclass, property } = cc._decorator;
 
@@ -11,6 +12,9 @@ export default class NewClass extends cc.Component {
 
     @property
     nextSceneName = '';
+
+    @property(RunNumber)
+    activeWhenLoadAll: RunNumber = null
 
     start() {
 
@@ -27,7 +31,7 @@ export default class NewClass extends cc.Component {
 
                     node.getComponent(Replay_min).setDrawPath(res[i]);
                 }
-                
+
                 let seq = cc.sequence(
                     cc.delayTime(1.0),
                     cc.moveTo(1, cc.v2(0, Math.floor(res.length / 84) * 1035)),
@@ -41,6 +45,14 @@ export default class NewClass extends cc.Component {
                         let newnode_seq = cc.sequence(
                             cc.fadeIn(1.0),
                             cc.delayTime(3.0),
+                            cc.callFunc(function () {
+                                
+                                self.node.opacity = 0;
+                                self.activeWhenLoadAll.node.parent.active = true;
+                                self.activeWhenLoadAll.goalNumber = res.length;
+
+                            }),
+                            cc.delayTime(10),
                             cc.callFunc(function () {
                                 cc.director.loadScene(self.nextSceneName);
                             })
