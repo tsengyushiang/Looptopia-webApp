@@ -51,10 +51,9 @@ export default class Counter extends cc.Component {
                 node.active = true;
             })
 
-            if (self.startAnimation) {
-                self.startAnimation.node.active = false;
-            }
-
+            self.onBegin.forEach(funcs => {
+                funcs.emit();
+            })
         }
 
         if (this.startAnimation) {

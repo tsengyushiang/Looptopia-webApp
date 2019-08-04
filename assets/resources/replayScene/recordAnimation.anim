@@ -1,0 +1,89 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "recordAnimation",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 4.5,
+  "sample": 10,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "New Label": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1,
+              "value": true
+            },
+            {
+              "frame": 2,
+              "value": false
+            },
+            {
+              "frame": 3,
+              "value": false
+            },
+            {
+              "frame": 4.5,
+              "value": false
+            }
+          ]
+        }
+      },
+      "form": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 2.9,
+              "value": 0
+            },
+            {
+              "frame": 3,
+              "value": 255
+            }
+          ]
+        }
+      },
+      "form/Time": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 3.4,
+              "value": 0
+            },
+            {
+              "frame": 3.5,
+              "value": 255
+            }
+          ]
+        }
+      },
+      "form/nodCount": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 3.4,
+              "value": 0
+            },
+            {
+              "frame": 3.5,
+              "value": 255
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0,
+      "func": "",
+      "params": []
+    }
+  ]
+}
