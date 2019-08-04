@@ -20,16 +20,14 @@ export default class PathRecorder extends cc.Component {
 
     onLoad() {
 
-        if (!window.hasOwnProperty("path")) {
-            this.init()
-        }
-
+        this.init()
         this.accumulateTime = 0;
     }
 
     init() {
 
         window["path"] = [];
+        window["accurate_path"] = [];
 
     }
 
@@ -39,6 +37,13 @@ export default class PathRecorder extends cc.Component {
         let recordSampleTime = timeUnit / this.recordFPS;
         this.accumulateTime += dt;
         let accumulateTimeMiniSecond = Math.round(this.accumulateTime * timeUnit);
+
+        if (this.target && accumulateTimeMiniSecond % 10 == 0) {
+            window["accurate_path"].push({
+                pos: this.target.node.position,
+                animation: this.target.getCurrentAction()
+            });
+        }
 
         if (accumulateTimeMiniSecond <= recordSampleTime) return;
 
@@ -50,7 +55,6 @@ export default class PathRecorder extends cc.Component {
                 pos: this.target.node.position,
                 animation: this.target.getCurrentAction()
             });
-
         }
     }
 

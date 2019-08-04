@@ -2,6 +2,7 @@
 window.nodCount = 0;
 window.day = 0;
 window.path = [];
+window.accurate_path = [];
 
 
 window.requestOnFinishedFunction = function () { };

@@ -1,1 +1,1 @@
-function getRequestCallBack(n){let i=[];n.forEach(n=>{i.push(JSON.parse(n))}),window.requestOnFinishedFunction(i),window.requestOnFinishedFunction=function(){}}window.day=0,window.path=[],window.requestOnFinishedFunction=function(){};
+function getRequestCallBack(n){let i=[];n.forEach(n=>{i.push(JSON.parse(n))}),window.requestOnFinishedFunction(i),window.requestOnFinishedFunction=function(){}}window.nodCount=0,window.day=0,window.path=[],window.accurate_path=[],window.requestOnFinishedFunction=function(){};

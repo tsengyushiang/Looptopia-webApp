@@ -239,6 +239,14 @@ export default class MovingController extends cc.Component {
 
     goNod(dt) {
 
+        if (this.animator.getAnimationState("left") &&
+            this.animator.getAnimationState("right") &&
+            this.animator.getAnimationState("front") &&
+            this.animator.getAnimationState("back")) {
+
+        }
+        else return;
+
         if (this.animator.getAnimationState("left").isPlaying == true) return;
         if (this.animator.getAnimationState("right").isPlaying == true) return;
         if (this.animator.getAnimationState("front").isPlaying == true) return;

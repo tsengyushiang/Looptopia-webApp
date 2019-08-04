@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "sit",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.8,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "af555a27-da69-4e7a-8d3d-7f0ca004df21"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "eb8c6dab-ec80-4849-b173-e06d5e0bda39"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "1e7fd447-8c87-4221-b75b-ae76a455db56"
+            }
+          },
+          {
+            "frame": 0.6,
+            "value": {
+              "__uuid__": "aa800fc8-9958-48b9-a65b-d8a596de5869"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

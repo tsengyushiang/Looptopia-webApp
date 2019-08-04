@@ -1,10 +1,13 @@
-import PathRecorder from "./PathRecorder";
 import NetworkManger from "./NetWrokManger";
+import AnimationReplay from "./AnimationReplay";
 
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class PathDrawer extends cc.Component {
+
+    @property(AnimationReplay)
+    target: AnimationReplay = null;
 
     @property(cc.Graphics)
     graphics: cc.Graphics = null;
@@ -23,19 +26,17 @@ export default class PathDrawer extends cc.Component {
     totalPlayTime: number = 10;
 
     currentTime: number = 0;
-    start() {
-        let self = this;
-        NetworkManger.getAllRecords(function (res) {
-            self.path = res[res.length - 1];
-            self.drawLine_second = self.totalPlayTime * 1000 / self.path.length;
-        })
 
+    loadLatestPath() {
+
+        this.path = window['accurate_path'];
+        this.drawLine_second = this.totalPlayTime * 1000 / this.path.length;
     }
 
     smallOut() {
 
         let seq = cc.sequence(cc.delayTime(1.0), cc.scaleTo(1, 0, 0));
-        this.node.runAction(seq);
+        this.node.parent.runAction(seq);
     }
 
 
@@ -57,15 +58,26 @@ export default class PathDrawer extends cc.Component {
                 this.path[this.index + 1].pos.x,
                 this.path[this.index + 1].pos.y);
 
-            this.graphics.stroke();
+            this.target.node.position = this.path[this.index + 1].pos;
+            this.target.setAnimation(this.path[this.index + 1].animation);
+
+            if (this.drawPath)
+                this.graphics.stroke();
+
             this.index++;
             this.currentTime = 0;
-            console.log(this.index, this.path[this.index]);
         }
 
-        if (this.loop && this.index >= this.path.length) {
-            this.graphics.clear();
-            this.currentTime = 0;
+        if (this.index >= this.path.length - 1) {
+
+            if (this.loop) {
+                this.graphics.clear();
+                this.currentTime = 0;
+                this.index = 0;
+            }
+            else {
+                this.target.end();
+            }
         }
 
     }

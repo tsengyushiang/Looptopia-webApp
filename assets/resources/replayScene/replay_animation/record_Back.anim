@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "record_Back",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": -0.2,
+            "value": {
+              "__uuid__": "d7c35455-4fcb-4602-b4b6-a647829070d0"
+            }
+          },
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "d7c35455-4fcb-4602-b4b6-a647829070d0"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "47e236ae-80d7-4259-aa95-7e5518675b7d"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "d7c35455-4fcb-4602-b4b6-a647829070d0"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
