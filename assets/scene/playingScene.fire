@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.3072916666666667,
-      "y": 0.3072916666666667,
+      "x": 0.2947916666666667,
+      "y": 0.2947916666666667,
       "z": 1
     },
     "_quat": {
@@ -89,9 +89,6 @@
         "__id__": 76
       },
       {
-        "__id__": 78
-      },
-      {
         "__id__": 64
       },
       {
@@ -102,7 +99,7 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 80
+        "__id__": 78
       }
     ],
     "_prefab": null,
@@ -3131,94 +3128,6 @@
     "_zoomRatio": 1,
     "_targetTexture": null,
     "_id": "68Ez3BeztLhbkxhQmBSWw0"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "組好長這樣",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 2
-    },
-    "_children": [],
-    "_active": false,
-    "_level": 2,
-    "_components": [
-      {
-        "__id__": 79
-      }
-    ],
-    "_prefab": null,
-    "_opacity": 98.685,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 253,
-      "g": 253,
-      "b": 253,
-      "a": 255
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 1920,
-      "height": 1080
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_position": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_scale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_quat": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "groupIndex": 0,
-    "_id": "2d3gg/fdtOl44kRB8iiUcF"
-  },
-  {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 78
-    },
-    "_enabled": true,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "1a2913db-8e76-42e1-82d9-91a729c139d9"
-    },
-    "_type": 0,
-    "_sizeMode": 1,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_state": 0,
-    "_atlas": null,
-    "_id": "1bwpii23hIPo6lTo9iSCEf"
   },
   {
     "__type__": "cc.Canvas",
