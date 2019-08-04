@@ -6,8 +6,12 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class PathDrawer extends cc.Component {
 
-    graphics: cc.Graphics
+    @property(cc.Graphics)
+    graphics: cc.Graphics = null;
+
     path = [];
+    drawLine_second = 0;
+    index = 0;
 
     @property
     drawPath: boolean = false;
@@ -19,48 +23,47 @@ export default class PathDrawer extends cc.Component {
     totalPlayTime: number = 10;
 
     currentTime: number = 0;
-
-    onLoad() {
-
-        //this.path = this.getComponent(PathRecorder).getPath();
-
+    start() {
         let self = this;
         NetworkManger.getAllRecords(function (res) {
-            console.log(res)
             self.path = res[res.length - 1];
+            self.drawLine_second = self.totalPlayTime * 1000 / self.path.length;
         })
-        this.graphics = this.getComponent(cc.Graphics);
+
     }
+
+    smallOut() {
+
+        let seq = cc.sequence(cc.delayTime(1.0), cc.scaleTo(1, 0, 0));
+        this.node.runAction(seq);
+    }
+
 
     update(dt) {
 
         if (this.path.length <= 0) return;
 
-        let preindex_afterNormalize = this.currentTime / this.totalPlayTime * this.path.length;
-        let preindex = Math.floor(preindex_afterNormalize)
-
         this.currentTime += dt;
-
-        let index_afterNormalize = this.currentTime / this.totalPlayTime * this.path.length;
-
-        let index = Math.floor(index_afterNormalize);
+        let accumelateMinSecond = this.currentTime * 1000;
 
 
-        if (this.drawPath && index > 0 && index < this.path.length) {
+        if (this.index < this.path.length - 1 && accumelateMinSecond > this.drawLine_second) {
 
             this.graphics.moveTo(
-                this.path[preindex].pos.x,
-                this.path[preindex].pos.y);
+                this.path[this.index].pos.x,
+                this.path[this.index].pos.y);
 
             this.graphics.lineTo(
-                this.path[index].pos.x,
-                this.path[index].pos.y);
+                this.path[this.index + 1].pos.x,
+                this.path[this.index + 1].pos.y);
 
             this.graphics.stroke();
-
+            this.index++;
+            this.currentTime = 0;
+            console.log(this.index, this.path[this.index]);
         }
 
-        if (this.loop && this.currentTime > this.totalPlayTime) {
+        if (this.loop && this.index >= this.path.length) {
             this.graphics.clear();
             this.currentTime = 0;
         }
