@@ -8,9 +8,12 @@ export default class Global extends cc.Component {
     @property(cc.Label)
     dayString: cc.Label = null;
 
+    @property(cc.Label)
+    english: cc.Label = null;
+
     @property(cc.Node)
     ui: cc.Node = null;
-    
+
     // GlobalManger
     public static get Instance() {
         return this;
@@ -26,7 +29,7 @@ export default class Global extends cc.Component {
         let self = this;
         NetworkManger.getAllRecords(function (data: any) {
             self.dayString.string = (data.length + 1).toString();
-
+            self.english.string = (data.length + 1).toString();
             self.ui.active = true;
             self.node.runAction(cc.fadeOut(1))
 
