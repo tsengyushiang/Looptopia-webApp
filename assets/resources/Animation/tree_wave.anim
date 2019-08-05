@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "tree_wave",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 4,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "ab42f4e8-8cbb-4d8e-898c-e344da29e197"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "f1195789-4720-4b6c-a1bf-19e2982abd3e"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "2b552b99-4a50-4f65-b59c-b2bfc205c87e"
+            }
+          },
+          {
+            "frame": 0.75,
+            "value": {
+              "__uuid__": "1c515711-3d61-4556-8236-3f00945d392f"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
