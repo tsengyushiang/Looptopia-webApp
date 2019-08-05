@@ -35,7 +35,7 @@ export default class NetworkManger {
     static isEnglish(): boolean {
 
 
-        if (window.location.href.indexOf("eng") == -1)
+        if (window.location.href.indexOf("english") == -1)
             return false;
         else
             return true;
