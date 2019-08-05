@@ -28,6 +28,13 @@ export default class MovingController extends cc.Component {
     @property(cc.AnimationClip)
     sit = null;
 
+    @property(cc.AudioClip)
+    nodAudio = null;
+    @property(cc.AudioClip)
+    eatAudio = null;
+    @property(cc.AudioClip)
+    walkingAudio = null;
+
     @property(cc.Node)
     potFood = null;
     @property(cc.Node)
@@ -102,29 +109,36 @@ export default class MovingController extends cc.Component {
         switch (this.currentMovingType) {
             case cc.macro.KEY.up:
                 this.rigibody.linearVelocity = cc.v2(0, Math.abs(this.stepSize * dt));
-                if (this.animator.getAnimationState("moveup").isPlaying == false)
+                if (this.animator.getAnimationState("moveup").isPlaying == false) {
                     this.animator.play('moveup');
-
+                    cc.audioEngine.play(this.walkingAudio, false, 0.5);
+                }
                 this.latestDirection = 'back';
                 break;
             case cc.macro.KEY.down:
                 this.rigibody.linearVelocity = cc.v2(0, -Math.abs(this.stepSize * dt));
-                if (this.animator.getAnimationState("movedown").isPlaying == false)
+                if (this.animator.getAnimationState("movedown").isPlaying == false) {
                     this.animator.play('movedown');
+                    cc.audioEngine.play(this.walkingAudio, false, 0.5);
+                }
 
                 this.latestDirection = 'front';
                 break;
             case cc.macro.KEY.left:
                 this.rigibody.linearVelocity = cc.v2(-Math.abs(this.stepSize * dt), 0);
-                if (this.animator.getAnimationState("moveleft").isPlaying == false)
+                if (this.animator.getAnimationState("moveleft").isPlaying == false) {
                     this.animator.play('moveleft');
+                    cc.audioEngine.play(this.walkingAudio, false, 0.5);
+                }
 
                 this.latestDirection = 'left';
                 break;
             case cc.macro.KEY.right:
                 this.rigibody.linearVelocity = cc.v2(Math.abs(this.stepSize * dt), 0);
-                if (this.animator.getAnimationState("moveright").isPlaying == false)
+                if (this.animator.getAnimationState("moveright").isPlaying == false) {
                     this.animator.play('moveright');
+                    cc.audioEngine.play(this.walkingAudio, false, 0.5);
+                }
 
                 this.latestDirection = 'right';
 
@@ -183,8 +197,12 @@ export default class MovingController extends cc.Component {
 
         this.disableDetectInput = true;
         let self = this;
+
+        let walkSound;
         let goEat = cc.sequence(
             cc.callFunc(function () {
+
+                walkSound = cc.audioEngine.play(self.walkingAudio, true, 0.5);
 
                 if (self.node.position.y - self.targetPositionNode.y > 1e-5) {
                     if (self.animator.getAnimationState("movedown").isPlaying == false)
@@ -217,6 +235,10 @@ export default class MovingController extends cc.Component {
             ,
             cc.callFunc(function () {
 
+                cc.audioEngine.stop(walkSound);
+
+                let eatSound = cc.audioEngine.play(self.eatAudio, true, 0.5);
+
 
                 let onFinished = function () {
 
@@ -224,12 +246,13 @@ export default class MovingController extends cc.Component {
                     self.potFood.destroy();
                     self.spaceFunc = self.goNod;
                     self.latestDirection = 'back';
-
+                    cc.audioEngine.stop(eatSound);
                     self.animator.off('finished', onFinished, this);
                 }
 
                 self.animator.on('finished', onFinished, this);
                 self.animator.play('eat');
+
 
             }),
         );
@@ -238,6 +261,7 @@ export default class MovingController extends cc.Component {
     }
 
     goNod(dt) {
+
 
         if (this.animator.getAnimationState("left") &&
             this.animator.getAnimationState("right") &&
@@ -251,6 +275,8 @@ export default class MovingController extends cc.Component {
         if (this.animator.getAnimationState("right").isPlaying == true) return;
         if (this.animator.getAnimationState("front").isPlaying == true) return;
         if (this.animator.getAnimationState("back").isPlaying == true) return;
+
+        cc.audioEngine.play(this.nodAudio, false, 0.5);
 
         window["nodCount"]++;
 

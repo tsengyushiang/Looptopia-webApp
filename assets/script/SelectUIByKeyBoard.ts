@@ -22,6 +22,11 @@ export default class SelectUIByKeyBoard extends cc.Component {
     @property(cc.Node)
     keepSleepTag: cc.Node = null;
 
+
+    @property(cc.AudioClip)
+    hitAudio = null;
+
+
     btnArr: cc.Button[] = [];
     tagArr: cc.Node[] = [];
     _currnetSelect = 0;
@@ -59,19 +64,24 @@ export default class SelectUIByKeyBoard extends cc.Component {
         switch (event.keyCode) {
 
             case cc.macro.KEY.up:
+                cc.audioEngine.play(this.hitAudio, false, 0.5);
+
                 this.currnetSelect--;
                 if (this.currnetSelect < 0)
                     this.currnetSelect = this.tagArr.length - 1;
                 break;
             case cc.macro.KEY.down:
+                cc.audioEngine.play(this.hitAudio, false, 0.5);
+
                 this.currnetSelect++;
                 if (this.currnetSelect > this.tagArr.length - 1)
                     this.currnetSelect = 0;
                 break;
             case cc.macro.KEY.space:
-                console.log(this.btnArr[this.currnetSelect]);
+                cc.audioEngine.play(this.hitAudio, false, 0.5);
+
                 this.btnArr[this.currnetSelect].clickEvents[0].emit([]);
-                cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
+                cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
 
                 break;
         }

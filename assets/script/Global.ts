@@ -10,8 +10,7 @@ export default class Global extends cc.Component {
 
     @property(cc.Node)
     ui: cc.Node = null;
-
-
+    
     // GlobalManger
     public static get Instance() {
         return this;

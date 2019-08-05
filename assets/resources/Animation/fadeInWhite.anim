@@ -19,6 +19,40 @@
           "value": 255
         }
       ]
+    },
+    "paths": {
+      "New Node": {
+        "comps": {
+          "cc.AudioSource": {
+            "volume": [
+              {
+                "frame": 1,
+                "value": 0.3
+              },
+              {
+                "frame": 2,
+                "value": 0
+              }
+            ]
+          }
+        }
+      },
+      "music": {
+        "comps": {
+          "cc.AudioSource": {
+            "volume": [
+              {
+                "frame": 1,
+                "value": 0.3
+              },
+              {
+                "frame": 2,
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
     }
   },
   "events": []
