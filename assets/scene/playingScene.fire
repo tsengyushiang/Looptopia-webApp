@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.3343668619791654,
-      "y": 0.3343668619791654,
+      "x": 0.3177083333333333,
+      "y": 0.3177083333333333,
       "z": 1
     },
     "_quat": {
@@ -2142,7 +2142,7 @@
       "__id__": 49
     },
     "_enabled": true,
-    "recordFPS": 5,
+    "recordFPS": 0.08,
     "target": {
       "__id__": 8
     },
@@ -2608,7 +2608,7 @@
     },
     "showTimeBar": true,
     "nextSceneName": "recordScene",
-    "countDown_second": 10,
+    "countDown_second": 120,
     "active_whenStart": [
       {
         "__id__": 3
