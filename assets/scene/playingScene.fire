@@ -2142,7 +2142,7 @@
       "__id__": 49
     },
     "_enabled": true,
-    "recordFPS": 0.08,
+    "recordFPS": 0.4,
     "target": {
       "__id__": 8
     },
