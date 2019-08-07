@@ -25,6 +25,7 @@ export default class MovingController extends cc.Component {
     @property(cc.AnimationClip)
     nodback = null;
 
+    
     @property(cc.AnimationClip)
     sit = null;
 

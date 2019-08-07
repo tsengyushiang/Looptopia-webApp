@@ -15,7 +15,8 @@ export default class MyLabel extends cc.Label {
     setNodNumber() {
 
         let nodCount = window["nodCount"] as number
-        this.string = nodCount.toString();
+        if (nodCount)
+            this.string = nodCount.toString();
     }
 
 }

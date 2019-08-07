@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.3125,
-      "y": 0.3125,
+      "x": 0.45110105413219515,
+      "y": 0.45110105413219515,
       "z": 1
     },
     "_quat": {
@@ -1491,15 +1491,13 @@
     "_fontSize": 22,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "9cea4efd-e5c6-4463-948d-9f04cb33fae1"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$fontFamily": "Arial",
+    "_N$fontFamily": "Microsoft JhengHei",
     "_N$overflow": 1,
     "_N$cacheMode": 0,
     "_id": "1aKSGOGEJBc6pQgMvJy4tW"
@@ -3751,15 +3749,13 @@
     "_fontSize": 22,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "9cea4efd-e5c6-4463-948d-9f04cb33fae1"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$fontFamily": "Arial",
+    "_N$fontFamily": "Microsoft JhengHei",
     "_N$overflow": 1,
     "_N$cacheMode": 0,
     "_id": "72mweEv65BVqVWVIl/GFhd"
@@ -4085,15 +4081,13 @@
     "_fontSize": 22,
     "_lineHeight": 44,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "9cea4efd-e5c6-4463-948d-9f04cb33fae1"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$fontFamily": "Arial",
+    "_N$fontFamily": "Microsoft JhengHei",
     "_N$overflow": 1,
     "_N$cacheMode": 0,
     "_id": "79gfw7lcpJTYt4yJgcaKT9"

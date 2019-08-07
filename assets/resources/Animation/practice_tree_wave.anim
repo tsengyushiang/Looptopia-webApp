@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "tree_wave",
+  "_name": "practice_tree_wave",
   "_objFlags": 0,
   "_native": "",
   "_duration": 1.3333333333333333,
@@ -14,25 +14,25 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "812c7b92-96d7-4edb-94f9-fb855eaa8aae"
+              "__uuid__": "c2991126-8296-404b-9845-944f485df046"
             }
           },
           {
             "frame": 0.3333333333333333,
             "value": {
-              "__uuid__": "92bddc87-d495-44ca-8141-3f704620f447"
+              "__uuid__": "fe3956bd-6b3d-420c-b199-3578a1677f0c"
             }
           },
           {
             "frame": 0.6666666666666666,
             "value": {
-              "__uuid__": "2fc2e989-c7b6-4d4a-8a44-651a7274dbe1"
+              "__uuid__": "3dc36559-27dc-441b-aee4-0897508c29b0"
             }
           },
           {
             "frame": 1,
             "value": {
-              "__uuid__": "372e7ca2-8584-4da4-91ee-09a5236592c5"
+              "__uuid__": "135a5909-d693-4ca4-ba5c-404ee31a34e3"
             }
           }
         ]
