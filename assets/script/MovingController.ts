@@ -29,12 +29,21 @@ export default class MovingController extends cc.Component {
     @property(cc.AnimationClip)
     sit = null;
 
-    @property(cc.AudioClip)
-    nodAudio = null;
-    @property(cc.AudioClip)
-    eatAudio = null;
-    @property(cc.AudioClip)
-    walkingAudio = null;
+    @property({
+        type: cc.AudioClip
+    })
+    nodAudio: cc.AudioClip = null;
+
+    @property({
+        type: cc.AudioClip
+    })
+    eatAudio: cc.AudioClip = null;
+
+    @property({
+        type: cc.AudioClip
+    })
+    walkingAudio: cc.AudioClip = null;
+
 
     @property(cc.Node)
     potFood = null;

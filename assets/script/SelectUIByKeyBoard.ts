@@ -22,9 +22,10 @@ export default class SelectUIByKeyBoard extends cc.Component {
     @property(cc.Node)
     keepSleepTag: cc.Node = null;
 
-
-    @property(cc.AudioClip)
-    hitAudio = null;
+    @property({
+        type: cc.AudioClip
+    })
+    hitAudio: cc.AudioClip = null;
 
 
     btnArr: cc.Button[] = [];
