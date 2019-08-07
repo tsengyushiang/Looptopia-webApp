@@ -318,19 +318,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../畫面04/介面素材/英文版/組好長這樣.jpg</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>480,270,960,540</rect>
-                <key>scale9Paddings</key>
-                <rect>480,270,960,540</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
         </map>
         <key>fileList</key>
         <array>
@@ -343,7 +330,6 @@
             <filename>../畫面04/介面素材/英文版/nod_english.png</filename>
             <filename>../畫面04/介面素材/英文版/route_english.png</filename>
             <filename>../畫面04/介面素材/英文版/times.png</filename>
-            <filename>../畫面04/介面素材/英文版/組好長這樣.jpg</filename>
             <filename>../畫面04/介面素材/右上動物/nod_right_white_01.png</filename>
             <filename>../畫面04/介面素材/右上動物/nod_right_white_02.png</filename>
         </array>
