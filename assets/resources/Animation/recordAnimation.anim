@@ -53,6 +53,10 @@
         "props": {
           "opacity": [
             {
+              "frame": 3,
+              "value": 0
+            },
+            {
               "frame": 3.4,
               "value": 0
             },
@@ -66,6 +70,10 @@
       "form/nodCount": {
         "props": {
           "opacity": [
+            {
+              "frame": 3,
+              "value": 0
+            },
             {
               "frame": 3.4,
               "value": 0
