@@ -34,6 +34,8 @@ export default class Global extends cc.Component {
             self.node.runAction(cc.fadeOut(1))
 
         });
+        cc.director.preloadScene("practiceScene", function () { });
+
 
     }
     /*

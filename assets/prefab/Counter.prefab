@@ -216,7 +216,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "a317ba59-175f-4c25-8f84-263d7c0a96a0"
+      "__uuid__": "c351f2ab-4bf3-4e4c-83f5-58c1e14e3fa8"
     },
     "_type": 1,
     "_sizeMode": 2,
@@ -230,7 +230,9 @@
     "_fillRange": 0,
     "_isTrimmedMode": false,
     "_state": 0,
-    "_atlas": null,
+    "_atlas": {
+      "__uuid__": "7fba6030-a7b2-4db7-bb0e-5b0d4d451a8f"
+    },
     "_id": ""
   },
   {
@@ -320,7 +322,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "9bad7dc7-cf05-4f94-85d6-fca08a8a4d51"
+      "__uuid__": "cca5d0ab-97f4-4ce2-9fe3-25644a3100eb"
     },
     "_type": 1,
     "_sizeMode": 2,
@@ -334,7 +336,9 @@
     "_fillRange": 0,
     "_isTrimmedMode": false,
     "_state": 1,
-    "_atlas": null,
+    "_atlas": {
+      "__uuid__": "7fba6030-a7b2-4db7-bb0e-5b0d4d451a8f"
+    },
     "_id": ""
   },
   {
@@ -469,6 +473,9 @@
     "showTimeBar": true,
     "nextSceneName": "playingScene",
     "countDown_second": 10,
+    "active_whenStart": [],
+    "startAnimation": null,
+    "endAnimation": null,
     "onBegin": [],
     "onFinish": [],
     "_id": ""

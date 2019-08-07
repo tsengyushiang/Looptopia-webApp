@@ -17,7 +17,7 @@
     "_parent": null,
     "_children": [],
     "_active": true,
-    "_level": 2,
+    "_level": 1,
     "_components": [
       {
         "__id__": 2
@@ -48,8 +48,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 157,
-      "height": 145
+      "width": 127,
+      "height": 115
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -93,7 +93,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "30d93bed-27c3-4229-a835-301993adce9a"
+      "__uuid__": "9f49b27f-c9e5-4768-945b-ef4848b9b8a9"
     },
     "_type": 0,
     "_sizeMode": 2,
@@ -107,7 +107,9 @@
     "_fillRange": 0,
     "_isTrimmedMode": false,
     "_state": 0,
-    "_atlas": null,
+    "_atlas": {
+      "__uuid__": "52fa5e5e-643d-4238-a474-9458755c7916"
+    },
     "_id": ""
   },
   {
@@ -156,6 +158,19 @@
     "moveLeft": {
       "__uuid__": "5941f8f4-b609-4ba0-a414-13896b533ee8"
     },
+    "eat": null,
+    "nodright": null,
+    "nodleft": null,
+    "nodfront": null,
+    "nodback": null,
+    "sit": null,
+    "nodAudio": null,
+    "eatAudio": null,
+    "walkingAudio": null,
+    "potFood": null,
+    "hint_nod": null,
+    "hint_eat": null,
+    "targetPositionNode": null,
     "_id": ""
   },
   {
