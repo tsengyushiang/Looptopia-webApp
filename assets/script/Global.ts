@@ -24,6 +24,10 @@ export default class Global extends cc.Component {
 
     onLoad() {
 
+        let persistMusicFromPlayScene: cc.Node;
+        if (persistMusicFromPlayScene = cc.find("Persistmusic")) {
+            persistMusicFromPlayScene.destroy();
+        }
 
         //this.recorder = new CanvasRecorder(document.getElementById("GameCanvas"))
         let self = this;

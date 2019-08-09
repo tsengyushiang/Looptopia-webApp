@@ -65,24 +65,33 @@ export default class SelectUIByKeyBoard extends cc.Component {
         switch (event.keyCode) {
 
             case cc.macro.KEY.up:
-                cc.audioEngine.play(this.hitAudio, false, 0.5);
+                if (!cc.audioEngine.isMusicPlaying())
+                    cc.audioEngine.play(this.hitAudio, false, 0.5);
 
                 this.currnetSelect--;
                 if (this.currnetSelect < 0)
                     this.currnetSelect = this.tagArr.length - 1;
                 break;
             case cc.macro.KEY.down:
-                cc.audioEngine.play(this.hitAudio, false, 0.5);
+
+                if (!cc.audioEngine.isMusicPlaying())
+                    cc.audioEngine.play(this.hitAudio, false, 0.5);
 
                 this.currnetSelect++;
                 if (this.currnetSelect > this.tagArr.length - 1)
                     this.currnetSelect = 0;
                 break;
             case cc.macro.KEY.space:
-                cc.audioEngine.play(this.hitAudio, false, 0.5);
+                if (!cc.audioEngine.isMusicPlaying())
+                    cc.audioEngine.play(this.hitAudio, false, 0.5);
+
+
 
                 this.btnArr[this.currnetSelect].clickEvents[0].emit([]);
-                cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
+
+                if (this.currnetSelect == 0)
+                    cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
+
 
                 break;
         }

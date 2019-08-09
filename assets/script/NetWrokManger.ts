@@ -1,7 +1,33 @@
 import axios from "axios"
 
-export default class NetworkManger {
 
+const { ccclass, property } = cc._decorator;
+
+@ccclass
+export default class NetworkManger extends cc.Component {
+
+
+    @property(cc.Button)
+    chineseBtn: cc.Button = null;
+    @property(cc.Button)
+    englishBtn: cc.Button = null;
+
+    onLoad() {
+
+        this.setBtnDependOnlanguge();
+
+    }
+
+    setBtnDependOnlanguge() {
+
+        this.chineseBtn.interactable = NetworkManger.isEnglish();
+        this.englishBtn.interactable = !NetworkManger.isEnglish();
+    }
+
+    switchLanguage() {
+        window["isEnglish"] = !window["isEnglish"];
+        this.setBtnDependOnlanguge();
+    }
 
     static getAllRecords(callback: Function) {
 
@@ -35,11 +61,8 @@ export default class NetworkManger {
     static isEnglish(): boolean {
 
 
-        if (window.location.href.indexOf("english") == -1)
-            return false;
-        else
-            return true;
-   
-        }
+        return window["isEnglish"];
+
+    }
 
 }

@@ -8,13 +8,15 @@ export default class RunNumber extends cc.Component {
 
     runTime = 7;
     accumlateTime = 0;
-    goalNumber = 100;
+    goalNumber = -1;
     start() {
         this.lable = this.getComponent(cc.Label);
         this.lable.string = '0'
     }
 
     update(dt) {
+
+        if (this.goalNumber == -1) return;
 
         this.accumlateTime += dt;
 

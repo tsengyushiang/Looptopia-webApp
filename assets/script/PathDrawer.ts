@@ -25,6 +25,9 @@ export default class PathDrawer extends cc.Component {
     @property
     totalPlayTime: number = 10;
 
+    @property(cc.Node)
+    disapearNode: cc.Node = null;
+
     currentTime: number = 0;
 
     loadLatestPath() {
@@ -35,7 +38,10 @@ export default class PathDrawer extends cc.Component {
 
     smallOut() {
 
-        let seq = cc.sequence(cc.delayTime(1.0), cc.scaleTo(1, 0, 0));
+        if (this.disapearNode)
+            this.disapearNode.active = false;
+
+        let seq = cc.sequence(cc.delayTime(1.0), cc.scaleTo(6, 0, 0));
         this.node.parent.runAction(seq);
     }
 

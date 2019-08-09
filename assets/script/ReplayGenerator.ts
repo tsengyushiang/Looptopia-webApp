@@ -35,6 +35,7 @@ export default class NewClass extends cc.Component {
                 let seq = cc.sequence(
                     cc.delayTime(1.0),
                     cc.moveTo(1, cc.v2(0, Math.floor(res.length / 84) * 1035)),
+                    cc.delayTime(1.0),
                     cc.callFunc(function () {
 
                         let node = cc.instantiate(self.replayUnit);
@@ -44,13 +45,14 @@ export default class NewClass extends cc.Component {
 
                         let newnode_seq = cc.sequence(
                             cc.fadeIn(1.0),
+                            cc.delayTime(5.0),
+                            cc.callFunc(function () {
+                                self.node.opacity = 0;
+                            }),
                             cc.delayTime(3.0),
                             cc.callFunc(function () {
-                                
-                                self.node.opacity = 0;
-                                self.activeWhenLoadAll.node.parent.active = true;
+                                self.activeWhenLoadAll.node.parent.opacity = 255;
                                 self.activeWhenLoadAll.goalNumber = res.length;
-
                             }),
                             cc.delayTime(10),
                             cc.callFunc(function () {

@@ -3,7 +3,7 @@
   "_name": "beforePlay",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 9.5,
+  "_duration": 11.5,
   "sample": 10,
   "speed": 1,
   "wrapMode": 1,
@@ -120,11 +120,11 @@
               "value": 255
             },
             {
-              "frame": 8,
+              "frame": 10,
               "value": 255
             },
             {
-              "frame": 9,
+              "frame": 11,
               "value": 0
             }
           ]
@@ -134,11 +134,11 @@
         "props": {
           "opacity": [
             {
-              "frame": 9,
+              "frame": 11,
               "value": 255
             },
             {
-              "frame": 9.5,
+              "frame": 11.5,
               "value": 0
             }
           ]

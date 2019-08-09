@@ -187,6 +187,33 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">../畫面04/form_cn.png</key>
+            <key type="filename">../畫面04/form_en.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>114,22,227,43</rect>
+                <key>scale9Paddings</key>
+                <rect>114,22,227,43</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../畫面04/route_english.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>30,11,59,21</rect>
+                <key>scale9Paddings</key>
+                <rect>30,11,59,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../畫面04/介面素材/analyzing.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -292,19 +319,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../畫面04/介面素材/英文版/route_english.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>30,10,59,20</rect>
-                <key>scale9Paddings</key>
-                <rect>30,10,59,20</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">../畫面04/介面素材/英文版/times.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -328,10 +342,12 @@
             <filename>../畫面04/介面素材/nod.png</filename>
             <filename>../畫面04/介面素材/route.png</filename>
             <filename>../畫面04/介面素材/英文版/nod_english.png</filename>
-            <filename>../畫面04/介面素材/英文版/route_english.png</filename>
             <filename>../畫面04/介面素材/英文版/times.png</filename>
             <filename>../畫面04/介面素材/右上動物/nod_right_white_01.png</filename>
             <filename>../畫面04/介面素材/右上動物/nod_right_white_02.png</filename>
+            <filename>../畫面04/form_cn.png</filename>
+            <filename>../畫面04/form_en.png</filename>
+            <filename>../畫面04/route_english.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

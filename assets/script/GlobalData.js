@@ -3,7 +3,8 @@ window.nodCount = 0;
 window.day = 0;
 window.path = [];
 window.accurate_path = [];
-
+window.isEnglish = false;
+window.bgmCurrentTime = 0;
 
 window.requestOnFinishedFunction = function () { };
 
@@ -20,4 +21,3 @@ function getRequestCallBack(dataArr) {
     window.requestOnFinishedFunction = function () { };
 
 }
-

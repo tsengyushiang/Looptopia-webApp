@@ -3,7 +3,7 @@
   "_name": "recordAnimation",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 4.5,
+  "_duration": 5.5,
   "sample": 10,
   "speed": 1,
   "wrapMode": 1,
@@ -11,26 +11,26 @@
     "paths": {
       "New Label": {
         "props": {
-          "active": [
+          "opacity": [
             {
               "frame": 0,
-              "value": false
+              "value": 0
+            },
+            {
+              "frame": 0.9,
+              "value": 0
             },
             {
               "frame": 1,
-              "value": true
+              "value": 255
             },
             {
               "frame": 2,
-              "value": false
+              "value": 255
             },
             {
-              "frame": 3,
-              "value": false
-            },
-            {
-              "frame": 4.5,
-              "value": false
+              "frame": 2.1,
+              "value": 0
             }
           ]
         }
@@ -39,47 +39,43 @@
         "props": {
           "opacity": [
             {
-              "frame": 2.9,
+              "frame": 3.9,
               "value": 0
             },
             {
-              "frame": 3,
+              "frame": 4,
               "value": 255
             }
           ]
         }
       },
-      "form/Time": {
+      "form/Time/Animation": {
         "props": {
           "opacity": [
             {
-              "frame": 3,
+              "frame": 4.4,
               "value": 0
             },
             {
-              "frame": 3.4,
-              "value": 0
-            },
-            {
-              "frame": 3.5,
+              "frame": 4.5,
               "value": 255
             }
           ]
         }
       },
-      "form/nodCount": {
+      "form/Time/number": {
         "props": {
           "opacity": [
             {
-              "frame": 3,
+              "frame": 4.9,
               "value": 0
             },
             {
-              "frame": 3.4,
-              "value": 0
+              "frame": 5,
+              "value": 255
             },
             {
-              "frame": 3.5,
+              "frame": 5.5,
               "value": 255
             }
           ]
