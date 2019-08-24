@@ -62,7 +62,6 @@ export default class AnimationReplay extends cc.Component {
             let self = this;
             let onFinished = function () {
 
-                self.animator.removeClip(self.sit);
                 self.animator.off('finished', onFinished, this);
             }
 
