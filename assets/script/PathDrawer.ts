@@ -42,6 +42,7 @@ export default class PathDrawer extends cc.Component {
             this.disapearNode.active = false;
 
         this.path = [];
+        this.target.setAnimation('sit');
         let seq = cc.sequence(cc.delayTime(1.0), cc.scaleTo(6, 0, 0));
         this.node.parent.runAction(seq);
     }
