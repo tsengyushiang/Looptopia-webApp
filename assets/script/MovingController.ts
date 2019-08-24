@@ -171,6 +171,9 @@ export default class MovingController extends cc.Component {
 
     goSit() {
 
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
+
         let self = this;
         this.rigibody.linearVelocity = cc.v2(0, 0);
         this.node.stopAllActions();

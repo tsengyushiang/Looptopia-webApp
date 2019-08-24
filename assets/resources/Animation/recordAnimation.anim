@@ -3,7 +3,7 @@
   "_name": "recordAnimation",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 5.5,
+  "_duration": 7.8,
   "sample": 10,
   "speed": 1,
   "wrapMode": 1,
@@ -25,11 +25,11 @@
               "value": 255
             },
             {
-              "frame": 2,
+              "frame": 6,
               "value": 255
             },
             {
-              "frame": 2.1,
+              "frame": 6.1,
               "value": 0
             }
           ]
@@ -39,11 +39,11 @@
         "props": {
           "opacity": [
             {
-              "frame": 3.9,
+              "frame": 6.2,
               "value": 0
             },
             {
-              "frame": 4,
+              "frame": 6.3,
               "value": 255
             }
           ]
@@ -53,11 +53,11 @@
         "props": {
           "opacity": [
             {
-              "frame": 4.4,
+              "frame": 6.7,
               "value": 0
             },
             {
-              "frame": 4.5,
+              "frame": 6.8,
               "value": 255
             }
           ]
@@ -67,15 +67,15 @@
         "props": {
           "opacity": [
             {
-              "frame": 4.9,
+              "frame": 7.2,
               "value": 0
             },
             {
-              "frame": 5,
+              "frame": 7.3,
               "value": 255
             },
             {
-              "frame": 5.5,
+              "frame": 7.8,
               "value": 255
             }
           ]

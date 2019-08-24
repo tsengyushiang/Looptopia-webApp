@@ -41,6 +41,7 @@ export default class PathDrawer extends cc.Component {
         if (this.disapearNode)
             this.disapearNode.active = false;
 
+        this.path = [];
         let seq = cc.sequence(cc.delayTime(1.0), cc.scaleTo(6, 0, 0));
         this.node.parent.runAction(seq);
     }
@@ -57,14 +58,17 @@ export default class PathDrawer extends cc.Component {
         if (this.index < this.path.length - 1 && accumelateMinSecond > this.drawLine_second) {
 
             this.graphics.moveTo(
-                this.path[this.index].pos.x,
-                this.path[this.index].pos.y);
+                this.path[this.index].pos.x + this.node.position.x,
+                this.path[this.index].pos.y + this.node.position.y);
 
             this.graphics.lineTo(
-                this.path[this.index + 1].pos.x,
-                this.path[this.index + 1].pos.y);
+                this.path[this.index + 1].pos.x + this.node.position.x,
+                this.path[this.index + 1].pos.y + this.node.position.y);
 
-            this.target.node.position = this.path[this.index + 1].pos;
+            this.target.node.setPosition(
+                this.path[this.index + 1].pos.x + this.node.position.x,
+                this.path[this.index + 1].pos.y + this.node.position.y)
+
             this.target.setAnimation(this.path[this.index + 1].animation);
 
             if (this.drawPath)
